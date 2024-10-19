@@ -13,11 +13,11 @@ from util.markdown_to_pdf import *
 if __name__ == "__main__":
     config = get_config()
     path_output = config["base_dir"]+"/backend/data/output/"
-    filename = "react.txt"
+    filename = "MPC.txt"
 
 
     db = DatabaseConnection()
-    course_id = 1072719
+    course_id = 544496
 
     course = db.get_course_by_id(course_id=course_id)
     # print(course.to_dict())
@@ -27,13 +27,13 @@ if __name__ == "__main__":
     text += div(course.description)
     text += seperator()
 
-    textbook_id = 1906094
+    textbook_id = 3299648
     textbook = db.get_textbook_by_id(course_id, textbook_id)
     text += div(textbook.title)
     text += line_break()
     text += div(textbook.preface)
     text += line_break()
-    text += h4("Table of Content")
+    text += h4("目录")
     table = string_to_list(textbook.table)
     text += list(table)
     text += seperator()
