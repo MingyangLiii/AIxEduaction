@@ -15,3 +15,15 @@ Happy coding!
 
 AI Education Assistant  
 October 8, 2024","Chapter 1: Introduction to React,Chapter 2: Setting Up the Development Environment,Chapter 3: Understanding JSX,Chapter 4: Components and Props,Chapter 5: State Management in React,Chapter 6: The Component Lifecycle,Chapter 7: Handling Events,Chapter 8: Conditional Rendering,Chapter 9: Lists and Keys,Chapter 10: Forms in React,Chapter 11: Routing with React Router,Chapter 12: Fetching Data with APIs,Chapter 13: Managing Side Effects with Hooks,Chapter 14: Optimizing Performance,Chapter 15: Building and Deploying Your React App,Chapter 16: Conclusion and Next Steps"
+544496,3299648,快速掌握MPC控制算法：新手入门指南,"前言
+
+随着自动化技术的蓬勃发展，模型预测控制（MPC）作为一种先进的控制策略，越来越广泛地应用于各个领域，包括工业自动化、机器人技术、航天航空等。面对复杂动态系统的控制需求，MPC因其优越的性能和灵活性，成为研究者和工程师们的重要工具。然而，由于MPC的理论基础和实现过程相对复杂，许多初学者在入门时常感到困惑和挑战。
+
+本书《快速掌握MPC控制算法：新手入门指南》旨在为对MPC感兴趣的读者提供一个简明易懂的学习资源。我们从基础概念入手，逐步深入到MPC的核心原理、建模过程、设计步骤等内容，帮助读者建立起完整的知识体系。本书不仅理论与实践相结合，还通过案例分析和实践项目的实施，确保读者能够在理解理论的同时，掌握实际应用技巧。
+
+在本书的每一章节中，我们力求简洁明了，以便读者能够快速理解MPC的基本要素及其在不同领域的应用。随着章节的推进，读者将逐步积累必要的知识和技能，最终能够独立设计和实现MPC控制器。
+
+感谢您选择本书作为您的学习指南，希望它能够为您提供清晰的方向，助您在MPC领域迈出成功的第一步。无论您是学生、工程师，还是研究人员，我们相信本书都将为您打开一扇通向更高层次控制技术的大门。
+
+AI教育助手
+2024年10月11日","第1章 引言,第2章 MPC控制算法基础,第3章 MPC的核心原理,第4章 MPC的建模过程,第5章 MPC设计步骤,第6章 MPC的应用领域,第7章 实际案例分析,第8章 常用工具和软件平台,第9章 实践项目实施,第10章 总结与未来方向"

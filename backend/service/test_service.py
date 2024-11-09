@@ -20,8 +20,8 @@ if  __name__ == "__main__":
     db = DatabaseConnection()
     genai = Generator(agent=agent)
 
-    course_name = "React"
-    user_req = "This course should be prepared for the beginner."
+    course_name = "MPC 控制算法"
+    user_req = "我想要学习MPC控制算法， 我是一个新手，帮我在短时间内快速学习，不要太多内容。"
 
     pipeline = GenerationPipeline(agent)
     pipeline.generate_textbook(course_name=course_name, user_requirement=user_req)

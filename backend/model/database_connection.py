@@ -28,23 +28,6 @@ class DatabaseConnection:
         self.section_manager = SectionManager(self.section_db)
 
 
-    """
-    course database manipulation:
-
-    load_course: return dataframe from csv
-    save_course(df): save dataframe to csv
-
-    get_course_all()
-    get_course_by_id(id): return Course object according to id 
-    get_course_id_all(): return a list of course_id
-
-    add_course(course): add a Course object and save
-    update_course_by_id(id, Course property): update a Course object by id
-
-    remove_course_all(): 
-    remove_course_by_id(id): remove a Course object by id
-    
-    """
 
     def load_course(self):
         """Load the courses from the CSV file into a pandas DataFrame."""
@@ -83,26 +66,7 @@ class DatabaseConnection:
         return self.course_manager.remove_course_all()
 
 
-    
-    """
-    textbook database manipulation:
 
-    load_textbook: return dataframe from csv
-    save_textbook(df): save dataframe to csv
-
-    get_textbook_all()
-    get_textbook_by_id(course_id, textbook_id): return Textbook object by course_id and textbook_id 
-    get_textbook_all_by_id(course_id): return all textbooks in a course by course_id
-    get_textbook_id_all_by_id(course_id): return a list of textbook_id by a course_id
-
-    add_textbook(textbook): add a Textbook object and save
-    update_textbook_by_id(course_id, textbook_id, new_textbook): update a Textbook object by id
-    
-    remove_textbook_all(): 
-    remove_textbook_all_by_id(course_id)
-    remove_textbook_by_id(course_id, textbook_id): remove a Textbook object by id
-    
-    """
 
     def get_textbook_by_id(self, course_id, textbook_id):
         """Get a specific textbook by its course_id and textbook_id."""
@@ -143,25 +107,6 @@ class DatabaseConnection:
 
 
 
-    """
-    chapter database manipulation:
-
-    load_chapter: return dataframe from csv
-    save_chapter(df): save dataframe to csv
-
-    get_chapter_all()
-    get_chapter_by_id(course_id, textbook_id, chapter_id): return Chapter object by course_id and textbook_id 
-    get_chapter_all_by_course_textbook_id(course_id, textbook_id): return all chapters in a textbook by course_id and textbook_id
-    get_chapter_id_all(): return a list of chapter_id
-
-    add_chapter(textbook): add a Course object and save
-    update_chapter_by_id(course_id, textbook_id, chapter_id): update a Course object by id
-    
-    remove_chapter_all(): 
-    remove_chapter_all_by_course_textbook_id(course_id, textbook_id)
-    remove_chapter_by_id(course_id, textbook_id, chapter_id): remove a Course object by id
-    
-    """
 
     def load_chapter(self):
         """Delegate the loading of chapters to the chapter manager."""
@@ -208,23 +153,6 @@ class DatabaseConnection:
         return self.chapter_manager.remove_chapter_by_id(course_id, textbook_id, chapter_id)
     
 
-    """
-    section database manipulation:
-
-    load_section(): return dataframe from csv
-    save_section(df): save dataframe to csv
-
-    get_section_all()
-    get_section_by_id(course_id, textbook_id, chapter_id, section_id): return Section object according to id 
-    get_section_id_all_by_id(course_id, textbook_id, chapter_id): return a list of section_id
-
-    add_section(section): add a Section object and save
-    update_section_by_id(course_id, textbook_id, chapter_id, section_id, section): update a Section object by id
-
-    remove_section_all(): 
-    remove_section_by_id(course_id, textbook_id, chapter_id, section_id): remove a Section object by id
-    
-    """
 
     def load_section(self):
         """Delegate loading sections to the section manager."""
@@ -237,6 +165,9 @@ class DatabaseConnection:
     def get_section_all(self):
         """Delegate retrieval of all sections to the section manager."""
         return self.section_manager.get_section_all()
+    
+    def get_section_all_by_id(self, course_id, textbook_id, chapter_id):
+        return self.section_manager.get_section_all_by_id(course_id, textbook_id, chapter_id)
 
     def get_section_by_id(self, course_id, textbook_id, chapter_id, section_id):
         """Delegate retrieval of a section by its course_id, textbook_id, chapter_id, and section_id to the section manager."""
