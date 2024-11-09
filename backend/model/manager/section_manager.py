@@ -45,6 +45,34 @@ class SectionManager:
 
         return sections
 
+    def get_section_all_by_id(self, course_id, textbook_id, chapter_id):
+        """Retrieve all sections as a list of Section objects."""
+        df = self.load_section()
+
+        df = section_row = df[
+            (df['course_id'] == course_id) &
+            (df['textbook_id'] == textbook_id) &
+            (df['chapter_id'] == chapter_id)
+        ]
+
+        sections = []
+
+        for _, row in df.iterrows():
+            section = Section(
+                course_id=row['course_id'],
+                textbook_id=row['textbook_id'],
+                chapter_id=row['chapter_id'],
+                section_id=row['section_id'],
+                number=row['number'],
+                title=row['title'],
+                concept=row['concept'],
+                description=row['description'],
+                example=row['example']
+            )
+            sections.append(section)
+
+        return sections
+
     def get_section_by_id(self, course_id, textbook_id, chapter_id, section_id):
         """Get a specific section by its course_id, textbook_id, chapter_id, and section_id."""
         df = self.load_section()
