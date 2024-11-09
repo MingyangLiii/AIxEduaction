@@ -18,6 +18,7 @@ if __name__ == "__main__":
 
     db = DatabaseConnection()
     course_id = 544496
+    textbook_id = 3299648
 
     course = db.get_course_by_id(course_id=course_id)
     # print(course.to_dict())
@@ -27,7 +28,7 @@ if __name__ == "__main__":
     text += div(course.description)
     text += seperator()
 
-    textbook_id = 3299648
+
     textbook = db.get_textbook_by_id(course_id, textbook_id)
     text += div(textbook.title)
     text += line_break()
