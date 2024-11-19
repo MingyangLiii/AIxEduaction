@@ -9,11 +9,10 @@ def get_config():
     #     config = json.load(file)
 
     config = {
-        'base_dir': os.path.dirname(os.getcwd()),
+        'base_dir': os.getcwd(),
         "api_key": "sk"
     }
 
-    print(config['base_dir'])
     
     return config
 

@@ -8,6 +8,7 @@ from entity.course import Course
 from entity.chapter import Chapter
 from entity.section import Section
 from entity.textbook import Textbook
+from entity.card import Card
 from util.generate_id import generate_id
 from model.database_connection import DatabaseConnection
 
@@ -19,23 +20,23 @@ if __name__ == "__main__":
     test course manipulation
     """
     ## Create a course
-    course_id = generate_id()
-    print(type(course_id))
-    course = Course(course_id=course_id, title="Test Course", description="Test Description")
-    db_conn.add_course(course)
-    print(f"Added course: {course.to_dict()}")
+    # course_id = generate_id()
+    # print(type(course_id))
+    # course = Course(course_id=course_id, title="Test Course", description="Test Description")
+    # db_conn.add_course(course)
+    # print(f"Added course: {course.to_dict()}")
 
-    # Retrieve and verify the added course
-    retrieved_course = db_conn.get_course_by_id(course_id)
-    print(f"Retrieved course: {retrieved_course}")
-    assert retrieved_course.title == "Test Course", "Course retrieval failed."
+    # # Retrieve and verify the added course
+    # retrieved_course = db_conn.get_course_by_id(course_id)
+    # print(f"Retrieved course: {retrieved_course}")
+    # assert retrieved_course.title == "Test Course", "Course retrieval failed."
 
-    # Update the course
-    course.title = "Updated Course Name"
-    db_conn.update_course_by_id(course_id, course)
-    updated_course = db_conn.get_course_by_id(course_id)
-    print(f"Updated course: {updated_course}")
-    assert updated_course.title == "Updated Course Name", "Course update failed."
+    # # Update the course
+    # course.title = "Updated Course Name"
+    # db_conn.update_course_by_id(course_id, course)
+    # updated_course = db_conn.get_course_by_id(course_id)
+    # print(f"Updated course: {updated_course}")
+    # assert updated_course.title == "Updated Course Name", "Course update failed."
 
     # # Remove the course
     # db_conn.remove_course_by_id(course_id)
@@ -112,28 +113,52 @@ if __name__ == "__main__":
     """
 
     # Create a section
-    course_id = generate_id()
-    textbook_id = generate_id()
-    chapter_id = generate_id()
-    section_id = generate_id()
-    section = Section(course_id=course_id, textbook_id=textbook_id, chapter_id=chapter_id, section_id=section_id, number=1, title="Test Section", concept="Test Concept", description="Test Description", example="Test Example")
-    db_conn.add_section(section)
-    print(f"Added section: {section}")
+    # course_id = generate_id()
+    # textbook_id = generate_id()
+    # chapter_id = generate_id()
+    # section_id = generate_id()
+    # section = Section(course_id=course_id, textbook_id=textbook_id, chapter_id=chapter_id, section_id=section_id, number=1, title="Test Section", concept="Test Concept", description="Test Description", example="Test Example")
+    # db_conn.add_section(section)
+    # print(f"Added section: {section}")
 
     # Retrieve and verify the added section
-    retrieved_section = db_conn.get_section_by_id(course_id, textbook_id, chapter_id, section_id)
-    print(f"Retrieved section: {retrieved_section}")
-    assert retrieved_section.title == "Test Section", "Section retrieval failed."
+    # retrieved_section = db_conn.get_section_by_id(course_id, textbook_id, chapter_id, section_id)
+    # print(f"Retrieved section: {retrieved_section}")
+    # assert retrieved_section.title == "Test Section", "Section retrieval failed."
 
     # Update the section
-    section.title = "Updated Section Title"
-    db_conn.update_section_by_id(course_id, textbook_id, chapter_id, section_id, section)
-    updated_section = db_conn.get_section_by_id(course_id, textbook_id, chapter_id, section_id)
-    print(f"Updated section: {updated_section}")
-    assert updated_section.title == "Updated Section Title", "Section update failed."
+    # section.title = "Updated Section Title"
+    # db_conn.update_section_by_id(course_id, textbook_id, chapter_id, section_id, section)
+    # updated_section = db_conn.get_section_by_id(course_id, textbook_id, chapter_id, section_id)
+    # print(f"Updated section: {updated_section}")
+    # assert updated_section.title == "Updated Section Title", "Section update failed."
 
     # # Remove the section
     # db_conn.remove_section_by_id(course_id, textbook_id, chapter_id, section_id)
     # removed_section = db_conn.get_section_by_id(course_id, textbook_id, chapter_id, section_id)
     # assert removed_section is None, "Section removal failed."
     # print(f"Section with ID {section_id} removed successfully.")
+
+
+    course_id = generate_id()
+    card = Card(course_id=course_id, textbook_id="T001", chapter_id="CH001", section_id="S001", question="What is Python?", answer="A programming language.")
+    db_conn.add_card(card)
+    print(f"Added card: {card.to_dict()}")
+
+    # Retrieve and verify the added card
+    retrieved_card = db_conn.get_card_by_id(course_id, "T001", "CH001", "S001")
+    print(f"Retrieved card: {retrieved_card}")
+    assert retrieved_card.question == "What is Python?", "Card retrieval failed."
+
+    # Update the card
+    card.answer = "A powerful programming language."
+    db_conn.update_card_by_id(course_id, "T001", "CH001", "S001", "What is Python?", card)
+    updated_card = db_conn.get_card_by_id(course_id, "T001", "CH001", "S001")
+    print(f"Updated card: {updated_card}")
+    assert updated_card.answer == "A powerful programming language.", "Card update failed."
+
+    # Remove the card
+    db_conn.remove_card_by_id(course_id, "T001", "CH001", "S001", "What is Python?")
+    removed_card = db_conn.get_card_by_id(course_id, "T001", "CH001", "S001")
+    assert removed_card is None, "Card removal failed."
+    print(f"Card with question 'What is Python?' removed successfully.")

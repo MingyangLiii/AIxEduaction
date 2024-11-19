@@ -13,6 +13,7 @@ from model.manager.course_manager import CourseManager
 from model.manager.textbook_manager import TextbookManager
 from model.manager.chapter_manager import ChapterManager
 from model.manager.section_manager import SectionManager
+from model.manager.card_manager import CardManager
 
 class DatabaseConnection:
     def __init__(self):
@@ -21,14 +22,16 @@ class DatabaseConnection:
         self.textbook_db = self.base_dir + "/textbook.csv"
         self.chapter_db = self.base_dir + "/chapter.csv"
         self.section_db = self.base_dir + "/section.csv"
+        self.card_db = self.base_dir + "/card.csv"
 
         self.course_manager = CourseManager(self.course_db)
         self.textbook_manager = TextbookManager(self.textbook_db)
         self.chapter_manager = ChapterManager(self.chapter_db)
         self.section_manager = SectionManager(self.section_db)
+        self.card_manager = CardManager(self.card_db)
 
 
-
+    # Course Managemnet
     def load_course(self):
         """Load the courses from the CSV file into a pandas DataFrame."""
         return self.course_manager.load_course()
@@ -67,7 +70,7 @@ class DatabaseConnection:
 
 
 
-
+    # Textbook Management
     def get_textbook_by_id(self, course_id, textbook_id):
         """Get a specific textbook by its course_id and textbook_id."""
         return self.textbook_manager.get_textbook_by_id(course_id, textbook_id)
@@ -106,8 +109,8 @@ class DatabaseConnection:
     
 
 
-
-
+    
+    # Chapter Management
     def load_chapter(self):
         """Delegate the loading of chapters to the chapter manager."""
         return self.chapter_manager.load_chapter()
@@ -153,7 +156,7 @@ class DatabaseConnection:
         return self.chapter_manager.remove_chapter_by_id(course_id, textbook_id, chapter_id)
     
 
-
+    # Section Management
     def load_section(self):
         """Delegate loading sections to the section manager."""
         return self.section_manager.load_section()
@@ -194,4 +197,40 @@ class DatabaseConnection:
         return self.section_manager.remove_section_by_id(course_id, textbook_id, chapter_id, section_id)
 
 
+    # Cards Management
+    def load_cards(self):
+        """Load the cards from the CSV file into a pandas DataFrame."""
+        return self.card_manager.load_cards()
+
+    def save_cards(self, df):
+        """Save the cards DataFrame to the CSV file."""
+        self.card_manager.save_cards(df)
+
+    def get_all_cards(self):
+        """Retrieve all cards as a list of dictionaries."""
+        return self.card_manager.get_all_cards()
+
+    def get_cards_by_id(self, course_id, textbook_id, chapter_id):
+        """Retrieve all cards for a specific course, textbook, and chapter."""
+        return self.card_manager.get_cards_by_id(course_id, textbook_id, chapter_id)
+
+    def get_card_by_id(self, course_id, textbook_id, chapter_id, section_id):
+        """Get a specific card by its course_id, textbook_id, chapter_id, and section_id."""
+        return self.card_manager.get_card_by_id(course_id, textbook_id, chapter_id, section_id)
+
+    def add_card(self, card):
+        """Add a card to the CSV file if it does not already exist."""
+        return self.card_manager.add_card(card)
+
+    def add_card_list(self, card_list):
+        """Add multiple cards to the CSV file if they do not already exist."""
+        return self.card_manager.add_card_list(card_list)
+
+    def update_card_by_id(self, course_id, textbook_id, chapter_id, section_id, question, card):
+        """Update a card's details by its course_id, textbook_id, chapter_id, section_id, and question."""
+        return self.card_manager.update_card_by_id(course_id, textbook_id, chapter_id, section_id, question, card)
+
+    def remove_card_by_id(self, course_id, textbook_id, chapter_id, section_id, question):
+        """Remove a card by its course_id, textbook_id, chapter_id, section_id, and question."""
+        return self.card_manager.remove_card_by_id(course_id, textbook_id, chapter_id, section_id, question)
     
